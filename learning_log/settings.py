@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '4gob0ecyq8sczqi3dx&*hu7d1vwif=1ttunmrdi^u#xy_3!2^5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -145,8 +145,10 @@ if cwd == '/app' or cwd[:4] == '/tmp':
     #Honor the 'X-Forwarded-Proto' header for request.is_secure()
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO','https')
 
-    #Allow all host headers
-    ALLOWED_HOSTS = ['*']
+    #Allow only Heroku to host the project
+    ALLOWED_HOSTS = ['bose-learning-log.herokuapp.com']
+
+    DEBUG = False
 
     #Static asset configuration
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
